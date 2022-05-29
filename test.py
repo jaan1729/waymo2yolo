@@ -25,6 +25,8 @@ def main():
     
     classes =['TYPE_VEHICLE', 'TYPE_PEDESTRIAN', 'TYPE_CYCLIST']   
     
+    if labels.ndim == 1:
+      labels = np.expand_dims(labels,0)
     for label in labels:
         label*=[1,width,height,width,height]
         x1,y1,x2,y2 = int(label[1]-label[3]//2), int(label[2]-label[4]//2), int(label[1]+label[3]//2), int(label[2]+label[4]//2)
