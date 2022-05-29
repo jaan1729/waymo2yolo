@@ -12,7 +12,7 @@ def main():
     args = parser.parse_args()
     
     
-    text_file = os.path.join(args.work_dir, 'val2020.txt')
+    text_file = os.path.join(args.work_dir, args.version_name + '.txt')
     os.makedirs(args.out_dir, exist_ok=True)
     with open(text_file) as f:
         image_list = f.readlines()
@@ -28,7 +28,7 @@ def main():
     for label in labels:
         label*=[1,width,height,width,height]
         x1,y1,x2,y2 = int(label[1]-label[3]//2), int(label[2]-label[4]//2), int(label[1]+label[3]//2), int(label[2]+label[4]//2)
-        cls = classes[0]
+        cls = classes[int(label[0])]
         image = cv2.rectangle(image, (x1,y1), (x2,y2), (36,255,12), 1)
         cv2.putText(image, cls, (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36,255,12), 2)
     

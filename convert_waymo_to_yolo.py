@@ -329,7 +329,7 @@ def main():
             outfile.write(str(class_id)+" "+" ".join([str(a) for a in bb]) + '\n')
         outfile.close()
     image_list = os.listdir(image_dir)
-    with open(os.path.join(args.work_dir, 'val2020.txt'), 'w') as f:
+    with open(os.path.join(args.work_dir, args.version_name+'.txt'), 'w') as f:
         for file in image_list:
             file = os.path.join('./images', args.version_name,file)+'\n'
             f.write(file)
